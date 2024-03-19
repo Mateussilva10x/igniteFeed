@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
 import { format, formatDistanceToNow } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
@@ -52,12 +51,12 @@ function Post({ author, publishedAt, content }) {
       </header>
 
       <div className={styles.content}>
-        {content.map((line) => {
+        {content.map((line, index) => {
           if (line.type === "paragraph") {
-            return <p>{line.content}</p>;
+            return <p key={index}>{line.content}</p>;
           } else if (line.type === "link") {
             return (
-              <p>
+              <p key={index}>
                 <a>{line.content}</a>
               </p>
             );
@@ -80,8 +79,8 @@ function Post({ author, publishedAt, content }) {
       </form>
 
       <div className={styles.commentList}>
-        {comments.map((comment) => (
-          <Comment content={comment} />
+        {comments.map((comment, index) => (
+          <Comment key={index} content={comment} />
         ))}
       </div>
     </article>
