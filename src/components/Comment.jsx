@@ -12,7 +12,9 @@ function Comment({ content, onDeleteComment }) {
   };
 
   const handleLikeComment = () => {
-    setLikeCount(likeCount + 1);
+    setLikeCount((current) => {
+      return current + 1;
+    });
   };
 
   return (
